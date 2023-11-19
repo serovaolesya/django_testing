@@ -1,13 +1,12 @@
 from http import HTTPStatus
 
 import pytest
-from pytest_django.asserts import assertRedirects, assertFormError
+from pytest_django.asserts import assertFormError, assertRedirects
 
 from django.urls import reverse
 
 from news.forms import BAD_WORDS, WARNING
 from news.models import Comment
-
 
 COMMENT_TEXT = 'Текст комментария'
 
