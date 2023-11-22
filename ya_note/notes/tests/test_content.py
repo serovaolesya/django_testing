@@ -4,6 +4,8 @@ from django.urls import reverse
 
 from notes.models import Note
 
+from notes.forms import NoteForm
+
 User = get_user_model()
 
 
@@ -52,5 +54,7 @@ class TestNoteFormIsShown(TestCase):
     def test_auth_user_has_form(self):
         response = self.author_client.get(self.add_note_url)
         self.assertIn('form', response.context)
+        self.assertIsInstance(response.context['form'], NoteForm)
         response = self.author_client.get(self.edit_note_url)
         self.assertIn('form', response.context)
+        self.assertIsInstance(response.context['form'], NoteForm)
