@@ -99,7 +99,9 @@ def test_user_cant_use_prohibited_words(
     )
     updated_comments_count = Comment.objects.count()
     assert initial_comments_count == updated_comments_count
+    news.refresh_from_db()
+    updated_news = news
+    assert updated_news == initial_news
     comment = Comment.objects.last()
     if comment:
         assert comment.author == initial_author
-        assert comment.news == initial_news
